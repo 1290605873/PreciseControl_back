@@ -1,0 +1,120 @@
+// prefixer
+// 用于在属性上加前缀
+// 默认这里将只输出webkit前缀和标准
+//-----------------------------------------------------
+@mixin prefixer($property, $value, $prefixes: o webkit) {
+    @each $prefix in $prefixes {
+      @if $prefix == webkit and $prefixForWebkit == true {
+        -webkit-#{$property}: $value;
+      }
+      @else if $prefix == moz and $prefixForMozilla == true {
+        -moz-#{$property}: $value;
+      }
+      @else if $prefix == ms and $prefixForMicrosoft == true {
+        -ms-#{$property}: $value;
+      }
+    }
+    @if $prefixNo {
+      #{$property}: $value;
+    }
+  }
+  
+// prefixer-value
+// 用于在值上加前缀
+// 默认这里将输出webkit前缀，moz前缀和标准
+@mixin prefixer-value($property, $value, $prefixes: webkit moz) {
+  @each $prefix in $prefixes {
+    @if $prefix == webkit and $prefixForWebkit == true {
+      #{$property}: -webkit-#{$value};
+    }
+    @else if $prefix == moz and $prefixForMozilla == true {
+      #{$property}: -moz-#{$value};
+    }
+    @else if $prefix == ms and $prefixForMicrosoft == true {
+      #{$property}: -ms-#{$value};
+    }
+  }
+  @if $prefixNo {
+    #{$property}: $value;
+  }
+}
+//兼容ie
+@mixin flex-mid($property,$value,$propertyPrefix:true){
+  @if $flexMid {
+    @if $propertyPrefix {
+      -ms-#{$property} : $value;
+    } @else {
+      #{$property} : -ms-#{$value};
+    }
+  }
+}
+  //弹性盒
+//display Box
+@mixin box($box: box) {
+  @include prefixer-value(display, $box, webkit moz);
+  @include flex-mid(display,flexbox,false);
+}
+
+// Box orient
+@mixin box-orient($orient:horizontal){
+//horizontal | vertical | inline-axis | block-axis
+  @include prefixer(box-orient,$orient,webkit moz);
+  @include flex-mid(flex-direction,column);
+}
+//display inline-box
+@mixin inline-box($inline-box: inline-box) {
+  @include prefixer-value(display, $inline-box, webkit moz);
+}
+//display flex
+@mixin flex($flex:flex) {
+  @include prefixer-value(display, $flex, webkit moz);
+}
+// Box Flex
+@mixin box-flex($num: 1) {
+  // number
+  @include prefixer(box-flex, $num, webkit moz);
+  @include flex-mid(flex,$num)
+}
+// Flex-flow
+@mixin flex-flow($flex-flow:row nowrap) {
+  @include prefixer(flex-flow, $flex-flow);
+}
+//Flex-shrink
+@mixin flex-shrink($flex-shrink:1){
+  //number
+  @include  prefixer(flex-shrink,$flex-shrink)
+}
+// justify-content
+@mixin justify-content($justify:flex-start) {
+  //flex-start | flex-end | center | space-between | space-around
+  @include prefixer(justify-content, $justify);
+}
+// align-items
+@mixin align-items($items:flex-start) {
+  //flex-start | flex-end | center | baseline | stretch
+  @include prefixer(align-items,$items);
+}
+// Box Pack
+@mixin box-pack($type: start) {
+  // start | center | end | justify
+  @include prefixer(box-pack, $type, webkit moz);
+  @include flex-mid(flex-pack,$type)
+}
+//Box line
+@mixin box-lines($line:single){
+  //single | multiple
+  @include  prefixer(box-lines, $line, webkit moz);
+}
+// Box Align
+@mixin box-align($align: start) {
+  //start | end | center | baseline | stretch
+  @include prefixer(box-align, $align, webkit moz);
+  @include flex-mid(flex-align,$align)
+}
+// Box orient
+@mixin box-orient($orient:horizontal){
+  //horizontal | vertical | inline-axis | block-axis
+  @include prefixer(box-orient,$orient,webkit moz);
+  @include flex-mid(flex-direction,column);
+}
+

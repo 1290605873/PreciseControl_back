@@ -1,0 +1,113 @@
+//覆盖一些element-ui样式
+.pagination-container {
+  padding: 15px;
+}
+
+// .el-pagination {
+//   text-align: center;
+// }
+
+/*重置input select高度*/
+.el-input__inner {
+  height: 32px;
+  line-height: 32px;
+}
+.el-select .el-input .el-select__caret{
+  line-height: 32px;
+  height:32px;
+}
+/*重置按钮高度*/
+.el-button {
+  padding-top: 9px;
+  padding-bottom: 9px;
+}
+
+.el-table--border td, .el-table--border th, .el-table__body-wrapper .el-table--border.is-scrolling-left ~ .el-table__fixed {
+  border-right: 1px solid #e6e6e6;
+}
+
+.el-table td, .el-table th.is-leaf {
+  border-bottom: 1px solid #e6e6e6;
+}
+
+/**添加表头背景色**/
+.el-table th, .el-table tr {
+  background: transparent;
+}
+
+.el-table .el-table__header-wrapper tr,
+.el-table .el-table__header-wrapper td {
+  background-color: rgb(242, 242, 242);
+}
+
+/**消息提示居中*/
+.el-message {
+  top: 50% !important;
+}
+
+/*重置dialog*/
+.el-dialog__header {
+  background: #EBEEF3;
+  padding: 15px 20px 10px;
+}
+
+.el-dialog__title {
+  font-size: 16px;
+}
+
+.el-dialog__body {
+  padding: 15px 20px;
+}
+
+.el-dialog__footer {
+  text-align: center;
+}
+
+.el-dialog__headerbtn {
+  top: 17px;
+}
+
+/*对dialog居中 上下留10vh,内部滚动*/
+.maxDialog{
+  height: calc(80vh - 143px);
+  overflow-y: auto;
+}
+/**表格高度**/
+.el-table__body-wrapper td,
+.el-table__body-wrapper th
+{
+  padding: 8px 0;
+}
+.el-table__header td,
+.el-table__header th
+{
+  padding: 10px 0;
+}
+.el-table__header div{
+  line-height: 1;
+}
+.el-table__body-wrapper .el-button--text{
+  padding-top:3px;
+  padding-bottom:3px;
+}
+/*input宽度*/
+.com-width {
+  width: 185px;
+}
+/*link样式*/
+.link-type,
+.link-type:focus {
+  color: #337ab7;
+  cursor: pointer;
+
+  &:hover {
+    color: rgb(32, 160, 255);
+  }
+}
+.spaDialog{
+  height: calc(90vh - 80px);
+  overflow-y: auto;
+}
+.el-form--inline .el-form-item {
+  margin-bottom: 5px;
+}
